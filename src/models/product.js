@@ -1,30 +1,20 @@
-import mongoose, { model } from "mongoose";
+import mongoose from "mongoose";
 const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      lowercase: true,
-      trim: true,
-      minLength: [5, "can nhieu hon 5 ki tu"],
-      maxLength: [30, "can it hon 30 ki tu"],
-      unique: true,
-      required: [true, "khong duoc de trong"],
+      require: true,
+      minLength: 3,
     },
-    age: {
+    price: {
       type: Number,
-      min: [0, " tuoi phai lon hon 0"],
-      max: [100, " tuoi phai nho hon 100"],
+      require: true,
+      minLength: 1,
     },
-    email: {
-      type: String,
-    },
-    gender: {
+    description: {
       type: String,
     },
   },
-  {
-    timestamps: true,
-    versionKey: false,
-  }
+  { timestamps: true, versionKey: false }
 );
 export default mongoose.model("Product", productSchema);

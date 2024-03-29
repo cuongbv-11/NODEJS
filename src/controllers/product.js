@@ -1,5 +1,5 @@
+import Product from "../models/Product.js";
 import { productValid } from "../../validation/product.js";
-import Product from "../models/product.js";
 
 export const getAll = async (req, res) => {
   try {
