@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import bcryptjs from "bcryptjs";
 import Jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { signInValidator, signUpValidator } from "../../validation/user.js";
+import { signInValidator, signUpValidator } from "../../validations/user.js";
 dotenv.config();
 
 const { SECRET_CODE } = process.env;

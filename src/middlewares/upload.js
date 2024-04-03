@@ -1,19 +1,32 @@
 import multer from "multer";
 import path from "path";
 
-// Cấu hình lưu trữ và tên tệp
 const storage = multer.diskStorage({
+  // khai báo nơi lưu trữ file
   destination: (req, file, callback) => {
-    // Xác định thư mục đích
     callback(null, "src/uploads");
   },
   filename: (req, file, callback) => {
-    // Xác định tên tệp
+    // console.log(file);
     const filename = Date.now() + path.extname(file.originalname);
-    req.body.image = filename; // Gắn tên tệp vào req.body.image
+    // console.log(filename);
+    req.body.image = filename;
     callback(null, filename);
   },
 });
 
-// Export middleware multer đã cấu hình
 export const upload = multer({ storage: storage });
+
+const multiStorage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "src/uploads");
+  },
+  filename: (req, file, callback) => {
+    req.body.filenameArr = req.body.filenameArr || [];
+    const filename = Date.now() + path.extname(file.originalname);
+    req.body.filenameArr.push(filename);
+    callback(null, filename);
+  },
+});
+
+export const mutiUpload = multer({ storage: multiStorage });

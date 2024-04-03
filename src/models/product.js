@@ -3,16 +3,20 @@ const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      require: true,
-      minLength: 3,
+      required: true,
     },
     price: {
       type: Number,
-      require: true,
-      minLength: 1,
+      required: true,
     },
-    description: {
+    desc: {
       type: String,
+      required: true,
+    },
+    categoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
     },
   },
   { timestamps: true, versionKey: false }
